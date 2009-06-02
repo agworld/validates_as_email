@@ -47,9 +47,9 @@ module ActiveRecord
     module ClassMethods
       def validates_as_email(*attr_names)
         configuration = {
-          :message   => 'is an invalid email',
+          :message   => :invalid_email,
           :with      => RFC822::EmailAddress,
-          :allow_nil => true }
+          :allow_nil => false }
         configuration.update(attr_names.pop) if attr_names.last.is_a?(Hash)
 
         validates_format_of attr_names, configuration
