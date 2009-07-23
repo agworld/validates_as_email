@@ -1,6 +1,7 @@
 0.5.3 - Jul 22th 2009
   *  Plugin structure updated by Gabriel Sobrinho
   *  Refactoring of tests (but is that working?)
+  *  Gem'ified again
 
 0.5.2 - Jun 02nd 2009
   *  Use i18n by Gabriel Sobrinho
