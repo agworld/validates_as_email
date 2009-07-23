@@ -1,6 +1,13 @@
+0.5.3 - Jul 22th 2009
+  *  Plugin structure updated by Gabriel Sobrinho
+  *  Refactoring of tests (but is that working?)
+
+0.5.2 - Jun 02nd 2009
+  *  Use i18n by Gabriel Sobrinho
+
 0.5.1 - Aug 15th 2008
- * Repackaged original plugin by Ximon Eighteen for GitHub
- * Gem'ified plugin
+  *  Repackaged original plugin by Ximon Eighteen for GitHub
+  *  Gem'ified plugin
 
 0.1.4 - May 26th 2006
   *  Thijs van der Vossen fixed a plugin load issue in the test suite and
