@@ -1,34 +1,19 @@
-require 'test/unit'
+require 'test_helper'
 
-begin
-  require File.dirname(__FILE__) + '/../../../../config/boot'
-  require 'active_record'
-  require 'validates_as_email'
-rescue LoadError
-  require 'rubygems'
-  require 'activerecord'
-  require File.dirname(__FILE__) + '/../lib/validates_as_email'
-end
-
-class TestRecord < ActiveRecord::Base
-  def self.columns; []; end
-  attr_accessor :email
-  validates_as_email :email
-end
-
-class ValidatesAsEmailTest < Test::Unit::TestCase
-  def test_illegal_rfc822_email_address
+class ValidatesAsEmailTest < ActiveSupport::TestCase
+  test 'illegal RFC822 e-mail addresses' do
     addresses = [
       'Max@Job 3:14', 
       'Job@Book of Job',
       'J. P. \'s-Gravezande, a.k.a. The Hacker!@example.com',
-      ]
+    ]
+
     addresses.each do |address|
-      assert !TestRecord.new(:email => address).valid?, "#{address} should be illegal."
+      assert_match RFC822::Email, address, "#{address} should be illegal."
     end
   end
 
-  def test_legal_rfc822_email_address
+  test 'legal RFC822 e-mail addresses' do
     addresses = [
       'test@example',
       'test@example.com', 
@@ -36,9 +21,11 @@ class ValidatesAsEmailTest < Test::Unit::TestCase
       '"J. P. \'s-Gravezande, a.k.a. The Hacker!"@example.com',
       'me@[187.223.45.119]',
       'someone@123.com',
-      ]
+    ]
+
     addresses.each do |address|
-      assert TestRecord.new(:email => address).valid?, "#{address} should be legal."
+      assert_match RFC822::Email, address, "#{address} should be legal."
     end
   end
 end
+
