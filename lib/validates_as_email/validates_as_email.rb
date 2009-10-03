@@ -15,14 +15,15 @@ module ActiveRecord
   module Validations
     module ClassMethods
       def validates_as_email *attr_names
-        configuration = {
+        config = {
           :message => :invalid_email,
           :with => RFC822::EmailAddress,
           :allow_nil => false
-        }
-        configuration.update(attr_names.extract_options!)
+        }.update attr_names.extract_options!
 
-        validates_format_of attr_names, configuration
+        attr_names.each do |attr_name|
+          validates_format_of attr_name, config
+        end
       end
     end
   end
