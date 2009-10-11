@@ -15,11 +15,10 @@ module ActiveRecord
   module Validations
     module ClassMethods
       def validates_as_email *attr_names
-        attr_names.push {
-          :message => :invalid_email,
-          :with => RFC822::EmailAddress,
-          :allow_nil => false
-        }.update(attr_names.extract_options!)
+        attr_names.push({:message => :invalid_email,
+                         :with => RFC822::EmailAddress,
+                         :allow_nil => false
+                        }.update(attr_names.extract_options!))
 
         validates_format_of *attr_names
       end
