@@ -1,0 +1,32 @@
+h1. ValidatesAsEmail
+
+This work is based on "http://github.com/gbdev/validates_as_email":http://github.com/gbdev/validates_as_email.
+
+This Ruby on Rails plugin implements an ActiveRecord validation helper called validates_as_email. The helper acts as if validates_format_of was used with a regular expression used on auto_link helper.
+
+The plugin implements the regular expression "here":http://github.com/rails/rails/blob/d1202cfeb2cc7961c93a33ef3f5622d5393186f1/actionpack/lib/action_view/helpers/text_helper.rb#L574.
+
+h2. Installation
+
+<pre>$ ruby script/plugin install http://github.com/sobrinho/validates_as_email.git</pre>
+
+h3. Usage
+
+In your model file do something like:
+
+<pre>class Person < ActiveRecord::Base
+  validates_as_email :email
+end</pre>
+
+h2. Tests
+
+<pre>$ cd vendor/plugins/validates_as_email
+$ rake test</pre>
+
+h2. License
+
+See the LICENSE file.
+
+h2. Copyright
+
+Copyright (c) 2010 Gabriel Sobrinho <gabriel.sobrinho@gmail.com>

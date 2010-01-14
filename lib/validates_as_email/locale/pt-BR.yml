@@ -1,5 +1,0 @@
-pt-BR:
-  activerecord:
-    errors:
-      messages:
-        invalid_email: 'não é um endereço de e-mail válido'
