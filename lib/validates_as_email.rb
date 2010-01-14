@@ -12,3 +12,6 @@ module ActiveRecord
     end
   end
 end
+
+I18n.load_path += Dir[File.expand_path("#{File.dirname(__FILE__)}/../config/locales/*.yml")]
+
